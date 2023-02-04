@@ -47,7 +47,7 @@ class ThirdPage(Screen): #opens fourth page when user clicks 'search an ingredie
         label = Label(text='Search an ingredient below', ) #labels box
         top_box.add_widget(label) #assigns label to box
         self.add_widget(top_box) #makes box a widget
-        bot_box = BoxLayout(size_hint=(.5, .1), pos_hint={'x': .25, 'y': .7}) #makes search bar
+        bot_box = BoxLayout(size_hint=(.5, .05), pos_hint={'x': .25, 'y': .8}) #makes search bar
         self.search = TextInput(text='', multiline=False) #allows text input in search bar
         self.search.bind(on_text_validate=self.update_string) #binds string once user presses enter
         bot_box.add_widget(self.search) #makes search bar a widget
@@ -85,3 +85,4 @@ class MyApp(App):
 
 if __name__ == '__main__': #runs app
     MyApp().run()
+
