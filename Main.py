@@ -9,14 +9,16 @@ from kivy.uix.boxlayout import BoxLayout
 class FirstPage(Screen): #lines below make first app page with 4 buttons that each open other pages
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.add_widget(Button(text='Scan a label', on_press=self.go_to_second_page, size_hint=(.5, .18),
-                               pos_hint={'x': .25, 'y': .8}))
-        self.add_widget(Button(text='Search an ingredient', on_press=self.go_to_third_page, size_hint=(.5, .18),
-                               pos_hint={'x': .25, 'y': .6}))
-        self.add_widget(Button(text='How our rating system works', on_press=self.go_to_fourth_page, size_hint=(.5, .18),
-                               pos_hint={'x': .25, 'y': .4}))
-        self.add_widget(Button(text='Frequently asked questions', on_press=self.go_to_fifth_page, size_hint=(.5, .18),
-                               pos_hint={'x': .25, 'y': .2}))
+        self.add_widget(Button(text='Scan a label', on_press=self.go_to_second_page, size_hint=(.4, .15),
+                               pos_hint={'x': .3, 'y': .8}))
+        self.add_widget(Button(text='Search an ingredient', on_press=self.go_to_third_page, size_hint=(.4, .15),
+                               pos_hint={'x': .3, 'y': .65}))
+        self.add_widget(Button(text='How our rating system works', on_press=self.go_to_fourth_page, size_hint=(.4, .15),
+                               pos_hint={'x': .3, 'y': .5}))
+        self.add_widget(Button(text='Frequently asked questions', on_press=self.go_to_fifth_page, size_hint=(.4, .15),
+                               pos_hint={'x': .3, 'y': .35}))
+        self.add_widget(Button(text='Request an ingredient', on_press=self.go_to_sixth_page, size_hint=(.4, .15),
+                               pos_hint={'x': .3, 'y': .2}))
 
     def go_to_second_page(self, instance): #starts page 2 protocol when user clicks button
         app = App.get_running_app()
@@ -33,6 +35,10 @@ class FirstPage(Screen): #lines below make first app page with 4 buttons that ea
     def go_to_fifth_page(self, instance): #starts page 5 protocol when user clicks button
         app = App.get_running_app()
         app.screen_manager.current = 'fifth'
+
+    def go_to_sixth_page(self, instance): #starts page 6 protocol when user clicks button
+        app = App.get_running_app()
+        app.screen_manager.current = 'sixth'
 
 
 class SecondPage(Screen): #opens fourth page when user clicks 'scan a product'
@@ -67,6 +73,10 @@ class FifthPage(Screen): #opens fifth page when user clicks 'frequently asked qu
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+class SixthPage(Screen):
+    def __init__(self, **kwargs): #opens sixth page when user clicks 'request an ingredient'
+        super().__init__(**kwargs)
+
 
 class ScreenManagement(ScreenManager):
     pass
@@ -80,9 +90,9 @@ class MyApp(App):
         self.screen_manager.add_widget(ThirdPage(name='third'))
         self.screen_manager.add_widget(FourthPage(name='fourth'))
         self.screen_manager.add_widget(FifthPage(name='fifth'))
+        self.screen_manager.add_widget(SixthPage(name='sixth'))
         return self.screen_manager
 
 
 if __name__ == '__main__': #runs app
     MyApp().run()
-
