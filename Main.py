@@ -6,7 +6,7 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.boxlayout import BoxLayout
 
 
-class FirstPage(Screen): #lines below make first app page with 4 buttons that each open other pages
+class FirstPage(Screen): #lines below make first app page with 5 buttons that each open other pages
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.add_widget(Button(text='Scan a label', on_press=self.go_to_second_page, size_hint=(.4, .15),
