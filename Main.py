@@ -53,7 +53,7 @@ class ThirdPage(Screen): #opens fourth page when user clicks 'search an ingredie
         label = Label(text='Search an ingredient below', ) #labels box
         top_box.add_widget(label) #assigns label to box
         self.add_widget(top_box) #makes box a widget
-        bot_box = BoxLayout(size_hint=(.5, .05), pos_hint={'x': .25, 'y': .8}) #makes search bar
+        bot_box = BoxLayout(size_hint=(.4, .05), pos_hint={'x': .3, 'y': .8}) #makes search bar
         self.search = TextInput(text='', multiline=False) #allows text input in search bar
         self.search.bind(on_text_validate=self.update_string) #binds string once user presses enter
         bot_box.add_widget(self.search) #makes search bar a widget
@@ -84,7 +84,7 @@ class ScreenManagement(ScreenManager):
 
 class MyApp(App):
     def build(self):
-        self.screen_manager = ScreenManagement() #lines belowmake each page a widget
+        self.screen_manager = ScreenManagement() #lines below make each page a widget
         self.screen_manager.add_widget(FirstPage(name='first'))
         self.screen_manager.add_widget(SecondPage(name='second'))
         self.screen_manager.add_widget(ThirdPage(name='third'))
