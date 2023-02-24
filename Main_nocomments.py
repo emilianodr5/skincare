@@ -93,25 +93,29 @@ class ThirdPage(Screen): #opens fourth page when user clicks 'search an ingredie
             for row in results:
                 R = row
                 print(R) # if matching ingredient
-                self.my_variable = R
-                self.manager.transition.direction = 'left'
-                self.manager.current = 'seventh'
-class SeventhPage(Screen):
+                self.my_variable = R # creates a variable that can be carried to pg 7
+                self.manager.transition.direction = 'left' # creates transition between pg 3 & 7
+                self.manager.current = 'seventh' # redirects to pg 7
+
+class SeventhPage(Screen): # ingredient search report
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.my_variable = None
 
-    def on_pre_enter(self):
+    # following lines carry variable "r" to page 7
+
+    def on_pre_enter(self): # lines carry variable "r" to page 7
         super().on_pre_enter()
         self.my_variable = None
         r = self.manager.get_screen('third').my_variable
         if r is not None:
-            ing_name = TextInput(text=f'Ingredient: {r[0]}',readonly=True, size_hint=(0.5, 0.2),pos_hint={'center_x': 0.5, 'center_y': 0.7} )
+            ing_name = TextInput(text=f'Ingredient: {r[0]}',readonly=True, size_hint=(0.5, 0.2),pos_hint={'center_x': 0.5, 'center_y': 0.7} ) #displays ingredient name
             self.add_widget(ing_name)
-            goal= TextInput(text=f'This ingredient is used as: {r[1]}',readonly=True, size_hint=(0.5, 0.2),pos_hint={'center_x': 0.5, 'center_y': 0.6} )
+            goal= TextInput(text=f'This ingredient is used as: {r[1]}',readonly=True, size_hint=(0.5, 0.2),pos_hint={'center_x': 0.5, 'center_y': 0.6} ) # displays what ingredient is for
             self.add_widget(goal)
-            summary = TextInput(text=r[6], readonly=True, size_hint=(0.5, 0.2), pos_hint={'center_x': 0.5, 'center_y': 0.5}, multiline=True,)
+            summary = TextInput(text=r[6], readonly=True, size_hint=(0.5, 0.2), pos_hint={'center_x': 0.5, 'center_y': 0.5}, multiline=True,) #displays summary
             self.add_widget(summary)
+            # following lines display whether ingredient is GF, vegan, and/or eco-friendly
             if int(r[2]) == 1 | int(r[3]) == 1 | int(r[4]) == 1:
                 cats = TextInput(text='This ingredient is vegan, gluten free, and eco-friendly', readonly=True, size_hint=(0.5, 0.2),
                                     pos_hint={'center_x': 0.5, 'center_y': 0.35}, multiline=True, )
@@ -147,7 +151,6 @@ class SeventhPage(Screen):
             links = TextInput(text=f'Sources: {r[5]}', readonly=True, size_hint=(0.5, 0.2),
                                 pos_hint={'center_x': 0.5, 'center_y': 0.3}, multiline=True, )
             self.add_widget(links)
-
 
 class FourthPage(Screen): #opens fourth page when user clicks 'how our rating system works' (needs work)
     def __init__(self, **kwargs):
