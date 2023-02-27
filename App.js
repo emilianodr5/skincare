@@ -6,54 +6,55 @@ import {
   SafeAreaView,
   Text,
   Alert,
-} from 'react-native';
+} from 'react-native'; // adds necessary packages
 
-const Separator = () => <View style={styles.separator} />;
+const Separator = () => <View style={styles.separator} />; // defines separator between buttons
 
 const App = () => (
   <SafeAreaView style={styles.container}>
     <View>
-      <Button
-        title="Press me"
+      <Button // button layout: title, text color, action on press
+        title="Scan an Ingredient Label"
         color="#7cfc00"
-        onPress={() => Alert.alert('Simple Button pressed')}
+        onPress={() => Alert.alert('Cannot open Camera')}
       />
     </View>
     <Separator />
     <View>
       <Button
-        title="Press me"
+        title="Look up an ingredient"
         color="#f194ff"
-        onPress={() => Alert.alert('Button with adjusted color pressed')}
+        onPress={() => Alert.alert('Cannot open search')}
       />
     </View>
     <Separator />
     <View>
       <Button
-        title="Press me"
+        title="How Our Rating System Works"
         color="#d27d2d"
-        onPress={() => Alert.alert('Cannot press this one')}
+        onPress={() => Alert.alert('*picture*')}
       />
     </View>
     <Separator />
-    <View>
-      <Text style={styles.title}>
+    <View> 
+      <Text style={styles.title}> 
         placeholder
       </Text>
       <View style={styles.fixToText}>
         <Button
-          title="Left button"
-          onPress={() => Alert.alert('Left button pressed')}
+          title="FAQs"
+          onPress={() => Alert.alert('Questions?')}
         />
         <Button
-          title="Right button"
-          onPress={() => Alert.alert('Right button pressed')}
+          title="Request an Ingredient"
+          onPress={() => Alert.alert('Coming Soon!')}
         />
       </View>
     </View>
   </SafeAreaView>
 );
 
+// formatting code
 const styles = StyleSheet.create({
   container: {
     flex: 1,
