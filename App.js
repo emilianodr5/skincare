@@ -15,7 +15,7 @@ const App = () => (
     <View>
       <Button // button layout: title, text color, action on press
         title="Scan an Ingredient Label"
-        color="#7cfc00"
+        color="#9c4f96"
         onPress={() => Alert.alert('Cannot open Camera')}
       />
     </View>
@@ -23,7 +23,7 @@ const App = () => (
     <View>
       <Button
         title="Look up an ingredient"
-        color="#f194ff"
+        color="#ff6355"
         onPress={() => Alert.alert('Cannot open search')}
       />
     </View>
@@ -31,25 +31,25 @@ const App = () => (
     <View>
       <Button
         title="How Our Rating System Works"
-        color="#d27d2d"
+        color="#fba949"
         onPress={() => Alert.alert('*picture*')}
       />
     </View>
     <Separator />
     <View> 
-      <Text style={styles.title}> 
-        placeholder
-      </Text>
-      <View style={styles.fixToText}>
         <Button
           title="FAQs"
+          color="#fae442"
           onPress={() => Alert.alert('Questions?')}
         />
+    </View>
+    <Separator />
+    <View>
         <Button
           title="Request an Ingredient"
+          color="#8bd448"
           onPress={() => Alert.alert('Coming Soon!')}
         />
-      </View>
     </View>
   </SafeAreaView>
 );
