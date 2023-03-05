@@ -37,7 +37,7 @@ function HomeScreen({ navigation }) {
       <Button // button layout: title, text color, action on press
         title="Scan an Ingredient Label"
         color="#9c4f96"
-        onPress={() => Alert.alert('Cannot open Camera')}
+        onPress={() => Alert.alert('Cannot open Camera')} // opens an alert as we need to figure out how to connect camera
       />
     </View>
     <Separator />
@@ -45,7 +45,7 @@ function HomeScreen({ navigation }) {
       <Button
         title="Look up an ingredient"
         color="#ff6355"
-        onPress={() => navigation.navigate('Search Ingredients')}
+        onPress={() => navigation.navigate('Search Ingredients')} // opens new page
       />
     </View>
     <Separator />
@@ -53,7 +53,7 @@ function HomeScreen({ navigation }) {
       <Button
         title="How Our Rating System Works"
         color="#fba949"
-        onPress={() => Alert.alert('*picture*')}
+        onPress={() => navigation.navigate('Ratings Explained')}
       />
     </View>
     <Separator />
@@ -61,7 +61,7 @@ function HomeScreen({ navigation }) {
         <Button
           title="FAQs"
           color="#fae442"
-          onPress={() => Alert.alert('Questions?')}
+          onPress={() => navigation.navigate('Frequently Asked Questions')}
         />
     </View>
     <Separator />
@@ -69,14 +69,53 @@ function HomeScreen({ navigation }) {
         <Button
           title="Request an Ingredient"
           color="#8bd448"
-          onPress={() => Alert.alert('Coming Soon!')}
+          onPress={() => navigation.navigate('Add Ingredients')}
         />
     </View>
   </SafeAreaView>
   );
 }
 
+
+// new pages all the same, just different names for reference
 function SearchIngredients({ navigation }) {
+  const [value, onChangeText] = React.useState('Useless Multiline Placeholder'); // currently unused but initial point for search bar
+  return(
+   <SafeAreaView style={styles.container} >
+    <View>
+    <Button 
+    title="Go back" 
+    onPress={() => navigation.goBack()} />
+    </View>
+   </SafeAreaView>
+  );
+}
+
+function RatingsExplained({ navigation }) {
+  return(
+   <SafeAreaView style={styles.container} >
+    <View>
+    <Button 
+    title="Go back" 
+    onPress={() => navigation.goBack()} />
+    </View>
+   </SafeAreaView>
+  );
+}
+
+function FAQs({ navigation }) {
+  return(
+   <SafeAreaView style={styles.container} >
+    <View>
+    <Button 
+    title="Go back" 
+    onPress={() => navigation.goBack()} />
+    </View>
+   </SafeAreaView>
+  );
+}
+
+function RequestIngredient({ navigation }) {
   const [value, onChangeText] = React.useState('Useless Multiline Placeholder');
   return(
    <SafeAreaView style={styles.container} >
@@ -89,14 +128,18 @@ function SearchIngredients({ navigation }) {
   );
 }
 
-
+// builds a navigator between the functions
 const Stack = createStackNavigator();
 
+// create a stack including all the screens created by Stack
 function MyStack() {
   return (
       <Stack.Navigator>
         <Stack.Screen name="GLOskin" component={HomeScreen} />
         <Stack.Screen name="Search Ingredients" component={SearchIngredients} />
+        <Stack.Screen name="Ratings Explained" component={RatingsExplained} />
+        <Stack.Screen name="Frequently Asked Questions" component={FAQs} />
+        <Stack.Screen name="Add Ingredients" component={RequestIngredient} />
       </Stack.Navigator>
   );
 }
