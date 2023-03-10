@@ -154,7 +154,7 @@ function HomeScreen({ navigation }) {
       <Button // button layout: title, text color, action on press
         title="Scan an Ingredient Label"
         color="#9c4f96"
-        onPress={() => navigation.navigate('Camera')} // opens the stack (see createStackNavigator) named "camera",
+        onPress={() => navigation.navigate('Scan Ingredient Label')} // opens the stack (see createStackNavigator) named "Scan Ingredient Label",
         // which corresponds to the "component" 'ScanIngredients' as defined in MyStack 
       />
     </View>
